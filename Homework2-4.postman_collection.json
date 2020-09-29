@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "f1879417-0601-4c2b-981b-cc074cb0a767",
+		"name": "Homework2-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "homework1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2db8a8c-9806-4773-9f2a-f39f9d35c281",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(20);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/todos",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "homework2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae8ac30a-4ca8-4b28-89e3-fe6763125be5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"httpbin.org\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HomeWork}}/post\n",
+					"host": [
+						"{{HomeWork}}"
+					],
+					"path": [
+						"post\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "homework3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc4824bb-d901-46e7-afc4-fd2eb37b091b",
+						"exec": [
+							"pm.test(\"authenticated = true\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.authenticated).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HomeWork}}/basic-auth/user/pass",
+					"host": [
+						"{{HomeWork}}"
+					],
+					"path": [
+						"basic-auth",
+						"user",
+						"pass"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
